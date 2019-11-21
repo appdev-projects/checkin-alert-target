@@ -48,7 +48,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sqlite3', '~> 1.4'
   gem 'table_print'
-  gem 'faker'
   gem 'web_git', github: 'firstdraft/web_git'
 end
 
@@ -76,4 +75,4 @@ end
 
 gem 'devise'
 gem 'activeadmin', '2.2.0'
-
+gem 'faker'
