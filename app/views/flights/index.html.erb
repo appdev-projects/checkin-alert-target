@@ -39,20 +39,23 @@
         <% @upcoming_flights.each do |flight| %>
           <li class="list-group-item d-flex align-items-center justify-content-between">
             <div>
-              <% if flight.message_sent %>
-                <span class="text-success">
-                  <i class="fas fa-fw fa-check-circle"></i>
-                </span>
-              <% else %>
-                <span class="text-danger">
-                  <i class="fas fa-fw fa-stopwatch"></i>
-                </span>
-              <% end %>
-
-              Departs for <%= flight.description %> at <%= flight.departs_at.strftime("%l:%M%P on %b %e, %Y") %>
+              Departs for <%= flight.description %> at <%= flight.departs_at.strftime("%l:%M%P on %b %e, %Y %Z") %>
             </div>
 
             <div>
+              <% if flight.message_sent %>
+                <span class="badge badge-success">
+                  <i class="fas fa-fw fa-check-circle"></i>
+
+                  Alert sent
+                </span>
+              <% else %>
+                <span class="badge badge-danger">
+                  <i class="fas fa-fw fa-stopwatch"></i>
+
+                  Alert not yet sent
+                </span>
+              <% end %>
               <a href="/delete_flight/<%= flight.id %>">
                 <i class="far fa-fw fa-trash-alt"></i>
               </a>
@@ -74,15 +77,28 @@
       <ul class="list-group list-group-flush">
         <% @past_flights.each do |flight| %>
           <li class="list-group-item d-flex align-items-center justify-content-between">
-            <span>
-              Departs for <%= flight.description %> at <%= flight.departs_at.strftime("%l:%M%P on %b %e, %Y") %>
-            </span>
+            <div>
+              Departs for <%= flight.description %> at <%= flight.departs_at.strftime("%l:%M%P on %b %e, %Y %Z") %>
+            </div>
 
-            <span>
+            <div>
+              <% if flight.message_sent %>
+                <span class="badge badge-success">
+                  <i class="fas fa-fw fa-check-circle"></i>
+
+                  Alert sent
+                </span>
+              <% else %>
+                <span class="badge badge-danger">
+                  <i class="fas fa-fw fa-stopwatch"></i>
+
+                  Alert not yet sent
+                </span>
+              <% end %>
               <a href="/delete_flight/<%= flight.id %>">
-                <i class="far fa-trash-alt"></i>
+                <i class="far fa-fw fa-trash-alt"></i>
               </a>
-            </span>
+            </div>
           </li>
         <% end %>
       </ul>

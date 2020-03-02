@@ -55,7 +55,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'jw-update-draft-layout'
+  gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'winter-2020'
   gem 'letter_opener'
   gem 'meta_request'
 end

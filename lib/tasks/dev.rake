@@ -12,11 +12,21 @@ namespace(:dev) do
     
     p alice.errors.full_messages
 
-    50.times do
+    20.times do
       flight = Flight.new
       flight.user_id = alice.id
       flight.description = Faker::Address.city
       flight.departs_at =  Faker::Time.between(from: DateTime.now - 2.days, to: DateTime.now + 2.days)
+      flight.save
+      
+      p flight.errors.full_messages
+    end
+
+    20.times do
+      flight = Flight.new
+      flight.user_id = alice.id
+      flight.description = Faker::Address.city
+      flight.departs_at =  Faker::Time.between(from: 15.minutes.ago + 24.hours, to: 30.minutes.from_now + 24.hours)
       flight.save
       
       p flight.errors.full_messages

@@ -1,8 +1,8 @@
 class FlightsController < ApplicationController
   def index
-    @upcoming_flights = @current_user.flights.where("departs_at >= ?", DateTime.now).order({ :departs_at => :asc })
+    @upcoming_flights = @current_user.flights.where("departs_at >= ?", DateTime.current).order({ :departs_at => :asc })
 
-    @past_flights = @current_user.flights.where("departs_at < ?", DateTime.now).order({ :departs_at => :desc })
+    @past_flights = @current_user.flights.where("departs_at < ?", DateTime.current).order({ :departs_at => :desc })
 
     render({ :template => "flights/index.html.erb" })
   end
